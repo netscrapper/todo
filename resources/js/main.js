@@ -50,3 +50,24 @@ function addItemToDOM(text, completed) {
 
     list.insertBefore(item, list.childNodes[0]);
 }
+
+document.getElementById('add').addEventListener('click', function () {
+    var value = document.getElementById('item').value;
+    if (value) {
+        addItem(value);
+    }
+});
+
+document.getElementById('item').addEventListener('keydown', function (e) {
+    var value = this.value;
+    if (e.code === 'Enter' && value) {
+        addItem(value);
+    }
+});
+
+function addItem (value) {
+    addItemToDOM(value);
+    document.getElementById('item').value = '';
+  
+    data.todo.push(value);
+  }
