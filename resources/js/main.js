@@ -65,9 +65,30 @@ document.getElementById('item').addEventListener('keydown', function (e) {
     }
 });
 
-function addItem (value) {
+function addItem(value) {
     addItemToDOM(value);
     document.getElementById('item').value = '';
-  
+
     data.todo.push(value);
+    dataObjectUpdated();
+}
+
+function dataObjectUpdated() {
+    localStorage.setItem('todoList', JSON.stringify(data));
+}
+
+function removeItem() {
+    var item = this.parentNode.parentNode;
+    var parent = item.parentNode;
+    var id = parent.id;
+    var value = item.innerText;
+  
+    if (id === 'todo') {
+      data.todo.splice(data.todo.indexOf(value), 1);
+    } else {
+      data.completed.splice(data.completed.indexOf(value), 1);
+    }
+    dataObjectUpdated();
+  
+    parent.removeChild(item);
   }
