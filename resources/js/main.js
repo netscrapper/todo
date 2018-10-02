@@ -36,14 +36,12 @@ function addItemToDOM(text, completed) {
     remove.classList.add('remove');
     remove.innerHTML = removeSVG;
 
-    // Add click event for removing the item
     remove.addEventListener('click', removeItem);
 
     var complete = document.createElement('button');
     complete.classList.add('complete');
     complete.innerHTML = completeSVG;
 
-    // Add click event for completing the item
     complete.addEventListener('click', completeItem);
 
     buttons.appendChild(remove);
